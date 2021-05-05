@@ -4,7 +4,7 @@ import "./index.css";
 const OfferItem = ({ offer }) => {
   return (
     <div className="offer_container">
-      <img src={offer.product_image.url} alt="" />
+      <img src={offer.product_image.secure_url} alt="" />
 
       <div className="offer_detail">
         <div>

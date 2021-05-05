@@ -22,7 +22,7 @@ const Home = ({ data }) => {
                   </div>
                   <div className="card_offer">
                     <img
-                      src={item.product_image.url}
+                      src={item.product_image.secure_url}
                       title={item.product_description}
                       alt={item.product_description}
                     />
