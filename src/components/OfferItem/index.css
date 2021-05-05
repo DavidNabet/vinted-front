@@ -1,0 +1,100 @@
+/* Offer */
+.offer_wrapper {
+  height: calc(100vh - 60px);
+  background-color: #ebedee;
+}
+
+.offer_wrapper .offer_container {
+  width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  padding: 3rem 0;
+}
+
+.offer_wrapper .offer_container > img {
+  height: 60rem;
+  object-fit: cover;
+}
+
+.offer_wrapper .offer_container .offer_detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  width: 32rem;
+  padding: 4rem;
+}
+
+.offer_container .offer_detail .offer_detail_price {
+  font-size: 2.4rem;
+  line-height: 32px;
+  color: #111;
+}
+.offer_container .offer_detail .offer_detail_list {
+  padding: 0;
+  margin-block-start: 1.6rem;
+  margin-block-end: 1.6rem;
+}
+
+.offer_container .offer_detail .offer_detail_list li {
+  display: flex;
+  padding: 0.2rem 0;
+}
+
+.offer_detail .offer_detail_list li span {
+  flex: 1;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+
+.offer_detail .offer_detail_list li span:nth-child(2n + 1) {
+  color: var(--grey);
+}
+
+.offer_detail .offer_detail_list li span:nth-child(2n) {
+  color: #666;
+  font-weight: 700;
+}
+
+.offer_detail .offer_detail_content {
+  font-size: 1.6rem;
+}
+
+.offer_detail .offer_detail_content .detail_name {
+  font-weight: 700;
+  display: block;
+  margin-block-start: 1.6rem;
+  margin-block-end: 1.6rem;
+}
+.offer_detail .offer_detail_content .detail_description {
+  color: #666;
+  display: block;
+  margin-block-start: 1.6rem;
+  margin-block-end: 1.6rem;
+}
+.offer_detail .offer_detail_content .detail_avatar_name {
+  display: flex;
+  align-items: center;
+}
+.offer_detail .offer_detail_content .detail_avatar_name > img {
+  height: 5rem;
+  width: 5rem;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.offer_detail button {
+  color: #fff;
+  background: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: 4px;
+  width: 100%;
+  font-size: 1.6rem;
+  height: 3.6rem;
+  padding: 0 1.6rem;
+  line-height: 36px;
+  margin-top: 3.2rem;
+  cursor: pointer;
+}

@@ -6,7 +6,6 @@ const Home = ({ data }) => {
   return (
     <>
       <Hero />
-      {/* <Link to={`/offer/${item._id}`}></Link> */}
       <div className="container card_wrapper">
         {data.offers.map((item) => {
           return (

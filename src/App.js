@@ -4,6 +4,7 @@ import axios from "axios";
 import Header from "./components/Header";
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
+import Loader from "./components/Loader";
 import "./App.css";
 
 function App() {
@@ -13,9 +14,8 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      // "https://vinted-back-project.herokuapp.com/offers"
       const response = await axios.get(
-        "https://lereacteur-vinted-api.herokuapp.com/offers"
+        "https://vinted-back-project.herokuapp.com/offers"
       );
       // console.log(response.data);
       setData(response.data);
@@ -25,7 +25,7 @@ function App() {
   }, []);
 
   return isLoading ? (
-    <span>Downloading...</span>
+    <Loader />
   ) : (
     <>
       <Header />
