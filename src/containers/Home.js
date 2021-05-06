@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Hero from "../components/Hero";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
-const Home = ({ data }) => {
-  return (
+import Loader from "../components/Loader";
+
+const Home = () => {
+  const [data, setData] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(
+        "https://vinted-back-project.herokuapp.com/offers"
+      );
+      // console.log(response.data);
+      setData(response.data);
+      setIsLoading(false);
+    };
+    fetchData();
+  }, []);
+
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       <Hero />
       <div className="container card_wrapper">

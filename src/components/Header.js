@@ -1,6 +1,7 @@
 import logo from "../assets/vinted_logo.png";
+import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ tokenUser, getUserToken }) => {
   return (
     <header>
       <div className="container header">
@@ -13,8 +14,20 @@ const Header = () => {
           </form>
         </div>
         <div className="connect_container">
-          <button className="signup">S'inscrire</button>
-          <button className="login">Se connecter</button>
+          {tokenUser ? (
+            <button className="disconnect" onClick={() => getUserToken(null)}>
+              Se déconnecter
+            </button>
+          ) : (
+            <>
+              <Link to="/signup">
+                <button className="signup">S'inscrire</button>
+              </Link>
+              <Link to="/login">
+                <button className="login">Se connecter</button>
+              </Link>
+            </>
+          )}
           <button className="cart">Vends tes articles</button>
         </div>
       </div>

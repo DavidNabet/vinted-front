@@ -1,6 +1,6 @@
 const Loader = () => {
   return (
-    <div class="balls">
+    <div className="balls">
       <div></div>
       <div></div>
       <div></div>

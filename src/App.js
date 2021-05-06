@@ -1,41 +1,42 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import axios from "axios";
 import Header from "./components/Header";
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
-import Loader from "./components/Loader";
+import Login from "./containers/Login";
+import Signup from "./containers/Signup";
+import Cookies from "js-cookie";
 import "./App.css";
 
 function App() {
-  const [data, setData] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-  // const [pullData, setPullData] = useState([]);
+  const [tokenUser, setTokenUser] = useState(Cookies.get("userToken") || null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get(
-        "https://vinted-back-project.herokuapp.com/offers"
-      );
-      // console.log(response.data);
-      setData(response.data);
-      setIsLoading(false);
-    };
-    fetchData();
-  }, []);
+  const getUserToken = (token) => {
+    if (token) {
+      Cookies.set("userToken", token, { expires: 7 });
+      setTokenUser(token);
+    } else {
+      Cookies.remove("userToken");
+      setTokenUser(null);
+    }
+  };
 
-  return isLoading ? (
-    <Loader />
-  ) : (
+  return (
     <>
-      <Header />
       <Router>
+        <Header tokenUser={tokenUser} getUserToken={getUserToken} />
         <Switch>
           <Route path="/offer/:id">
             <Offer />
           </Route>
-          <Route path="/">
-            <Home data={data} />
+          <Route path="/login">
+            <Login getUserToken={getUserToken} />
+          </Route>
+          <Route path="/signup">
+            <Signup />
+          </Route>
+          <Route exact path="/">
+            <Home />
           </Route>
         </Switch>
       </Router>
