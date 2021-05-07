@@ -148,6 +148,7 @@ header {
 .card_container .card_offer .card_details span:not(:first-child) {
   color: var(--grey);
   font-size: 1.2rem;
+  text-transform: uppercase;
 }
 
 .card_container .card_offer > img {
