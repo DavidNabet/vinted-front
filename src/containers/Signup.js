@@ -8,11 +8,12 @@ const Signup = ({ getUserToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [checkbox, setCheckbox] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const request = await axios.post(
+      const response = await axios.post(
         "https://vinted-back-project.herokuapp.com/user/signup",
         {
           email: email,
@@ -21,12 +22,20 @@ const Signup = ({ getUserToken }) => {
           phone: "0607080910",
         }
       );
-      console.log(request.data);
-      // const tokenData = response.data.token;
-      // Cookies.set("userToken", tokenData, { expires: 7 });
-      // getUserToken(tokenData);
+      // console.log(response.data);
+      if (response.data.token) {
+        getUserToken(response.data.token);
+        history.push("/");
+      } else {
+        setErrorMessage("Une erreur est survenue");
+      }
       history.push("/login");
     } catch (err) {
+      if (err.response.status === 409) {
+        setErrorMessage("Cet email possède déjà un compte");
+      } else {
+        setErrorMessage("Une erreur est survenue");
+      }
       console.log(err.message);
     }
   };
@@ -68,6 +77,7 @@ const Signup = ({ getUserToken }) => {
           avoir au moins 18 ans.
         </p>
       </div>
+      {errorMessage && <p className="invalid-feedback">{errorMessage}</p>}
       <input type="submit" value="S'inscrire" />
       <Link to="/login">Tu as déjà un compte ? Connecte-toi ?</Link>
     </form>

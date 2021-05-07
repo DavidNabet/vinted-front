@@ -226,3 +226,8 @@ header {
   margin-top: 2rem;
   text-align: center;
 }
+
+.login_form .invalid-feedback {
+  color: red;
+  text-align: center;
+}

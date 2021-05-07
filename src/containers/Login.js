@@ -6,24 +6,28 @@ import { Link, useHistory } from "react-router-dom";
 const Login = ({ getUserToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState("");
   const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const request = await axios.post(
+      const response = await axios.post(
         "https://vinted-back-project.herokuapp.com/user/login",
         {
           email: email,
           password: password,
         }
       );
-      // console.log(request.data);
-      const tokenData = request.data.token;
-      // Cookies.set("userToken", tokenData, { expires: 7 });
-      getUserToken(tokenData);
-      history.push("/");
+      // console.log(response.data);
+      if (response.data.token) {
+        getUserToken(response.data.token);
+        history.push("/");
+      }
     } catch (err) {
+      if (err.response.status === 401) {
+        setErrors("Mauvais email et/ou mot de passe");
+      }
       console.log(err.message);
     }
   };
@@ -43,7 +47,8 @@ const Login = ({ getUserToken }) => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <input type="submit" value="S'inscrire" />
+      {<p className="invalid-feedback">{errors}</p>}
+      <input type="submit" value="Se connecter" />
       <Link to="/signup">Pas encore de compte ? Inscris-toi</Link>
     </form>
   );

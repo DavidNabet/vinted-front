@@ -1,7 +1,8 @@
+// import { useState } from "react";
 import logo from "../assets/vinted_logo.png";
 import { Link } from "react-router-dom";
 
-const Header = ({ tokenUser, getUserToken }) => {
+const Header = ({ tokenUser, getUserToken, handleChange }) => {
   return (
     <header>
       <div className="container header">
@@ -9,8 +10,12 @@ const Header = ({ tokenUser, getUserToken }) => {
           <img src={logo} alt="vinted logo" />
         </a>
         <div className="search_container">
-          <form action="">
-            <input type="text" placeholder="Recherche des articles" />
+          <form>
+            <input
+              type="text"
+              onChange={handleChange}
+              placeholder="Recherche des articles"
+            />
           </form>
         </div>
         <div className="connect_container">
