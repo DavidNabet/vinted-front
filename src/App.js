@@ -42,7 +42,7 @@ function App() {
       setIsLoading(false);
     };
     fetchData();
-  }, [data, title, sort]);
+  }, [title, sort]);
 
   const setUserToken = (token) => {
     if (token) {
