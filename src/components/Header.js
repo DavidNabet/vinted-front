@@ -1,8 +1,9 @@
 // import { useState } from "react";
 import logo from "../assets/vinted_logo.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = ({ tokenUser, setUserToken, handleSearch, setSort, sort }) => {
+  const location = useLocation();
   return (
     <header>
       <div className="container header">
@@ -16,18 +17,24 @@ const Header = ({ tokenUser, setUserToken, handleSearch, setSort, sort }) => {
               onChange={handleSearch}
               placeholder="Recherche des articles"
             />
-            <button
-              id="sort"
-              style={{
-                backgroundColor: sort ? "#C2175B" : "#2cb1ba",
-                border: "none",
-                marginTop: "10px",
-              }}
-              onClick={setSort}
-            >
-              {sort ? "Desc" : "Asc"}
-            </button>
-            <div className="section-range"></div>
+            {location.pathname === "/" ? (
+              <>
+                <button
+                  id="sort"
+                  style={{
+                    backgroundColor: sort ? "#C2175B" : "#2cb1ba",
+                    border: "none",
+                    marginTop: "10px",
+                  }}
+                  onClick={setSort}
+                >
+                  {sort ? "Desc" : "Asc"}
+                </button>
+                <div className="section-range"></div>
+              </>
+            ) : (
+              ""
+            )}
           </form>
         </div>
         <div className="connect_container">
