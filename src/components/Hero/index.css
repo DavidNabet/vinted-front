@@ -10,7 +10,6 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  height: 80px;
   pointer-events: none;
   width: 100%;
 }
