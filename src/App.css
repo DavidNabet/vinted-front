@@ -43,8 +43,8 @@ h2 {
 header {
   width: 100%;
   /* border-bottom: 1px solid var(--primary); */
-  height: 100px;
-  padding: 2rem 0;
+  /* height: 100px; */
+  margin: 2rem 0;
 }
 
 .header {
@@ -84,7 +84,8 @@ header {
   justify-content: flex-end;
 }
 
-.connect_container button {
+.connect_container button,
+#sort {
   margin-right: 1.4rem;
   cursor: pointer;
   outline: none;
@@ -99,7 +100,8 @@ header {
   color: var(--primary);
 }
 
-.connect_container > button {
+.connect_container > button,
+#sort {
   background-color: var(--primary);
   color: white;
 }

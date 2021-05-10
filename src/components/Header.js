@@ -2,7 +2,17 @@
 import logo from "../assets/vinted_logo.png";
 import { Link } from "react-router-dom";
 
-const Header = ({ tokenUser, getUserToken, handleChange }) => {
+const Header = ({
+  tokenUser,
+  getUserToken,
+  handleSearch,
+  setSort,
+  sort,
+  priceMin,
+  priceMax,
+  setPriceMin,
+  setPriceMax,
+}) => {
   return (
     <header>
       <div className="container header">
@@ -13,9 +23,29 @@ const Header = ({ tokenUser, getUserToken, handleChange }) => {
           <form>
             <input
               type="text"
-              onChange={handleChange}
+              onChange={handleSearch}
               placeholder="Recherche des articles"
             />
+            <button
+              id="sort"
+              style={{
+                background: sort ? "#C2175B" : "#2cb1ba",
+                border: "none",
+                marginTop: "10px",
+              }}
+              onClick={setSort}
+            >
+              {sort ? "Desc" : "Asc"}
+            </button>
+            <div className="section-range">
+              <input
+                type="range"
+                value={priceMin}
+                min={0}
+                onChange={setPriceMin}
+              />
+              <span>{priceMin}</span>
+            </div>
           </form>
         </div>
         <div className="connect_container">

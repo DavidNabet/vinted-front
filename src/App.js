@@ -13,7 +13,11 @@ function App() {
   const [tokenUser, setTokenUser] = useState(Cookies.get("userToken") || null);
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [search, setSearch] = useState("");
+  const [title, setTitle] = useState("");
+  const [sort, setSort] = useState(false);
+  const [priceMin, setPriceMin] = useState(0);
+  const [priceMax, setPriceMax] = useState(20);
+
   // const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
@@ -22,15 +26,19 @@ function App() {
         `https://vinted-back-project.herokuapp.com/offers`,
         {
           params: {
-            title: search,
+            title: title,
+            sort: sort ? "price-desc" : "price-asc",
+            priceMin: priceMin,
+            // priceMax: priceMax,
           },
         }
       );
+      console.log(response.data);
       setData(response.data);
       setIsLoading(false);
     };
     fetchData();
-  }, [search]);
+  }, [title, sort, priceMin]);
 
   const getUserToken = (token) => {
     if (token) {
@@ -42,19 +50,40 @@ function App() {
     }
   };
 
-  const handleSearchChange = async (evt) => {
+  const handleSearchChange = (evt) => {
     evt.preventDefault();
-    setSearch(evt.target.value);
+    setTitle(evt.target.value);
     // console.log(resultsSearch);
+  };
+
+  const handleCheckFilter = (e) => {
+    e.preventDefault();
+    setSort(!sort);
+  };
+
+  const handlePriceMin = (e) => {
+    e.preventDefault();
+    setPriceMin(Number(e.target.value));
+  };
+
+  const handlePriceMax = (e) => {
+    e.preventDefault();
+    setPriceMax(Number(e.target.value));
   };
 
   return (
     <>
       <Router>
         <Header
+          sort={sort}
           tokenUser={tokenUser}
           getUserToken={getUserToken}
-          handleChange={handleSearchChange}
+          handleSearch={handleSearchChange}
+          setSort={handleCheckFilter}
+          priceMin={priceMin}
+          priceMax={priceMax}
+          setPriceMin={handlePriceMin}
+          setPriceMax={handlePriceMax}
         />
         <Switch>
           <Route path="/offer/:id">
