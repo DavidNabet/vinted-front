@@ -15,7 +15,7 @@ const Publish = ({ tokenUser }) => {
   //history
   const history = useHistory();
 
-  console.log("token ", tokenUser);
+  //   console.log("token ", tokenUser);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
