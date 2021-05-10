@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 // import Cookies from "js-cookie";
 
-const Login = ({ getUserToken }) => {
+const Login = ({ setUserToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
@@ -21,14 +21,14 @@ const Login = ({ getUserToken }) => {
       );
       // console.log(response.data);
       if (response.data.token) {
-        getUserToken(response.data.token);
-        history.push("/");
+        setUserToken(response.data.token);
+        history.push("/publish");
       }
     } catch (err) {
+      console.log(err.message);
       if (err.response.status === 401) {
         setErrors("Mauvais email et/ou mot de passe");
       }
-      console.log(err.message);
     }
   };
 

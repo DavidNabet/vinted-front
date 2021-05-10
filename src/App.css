@@ -9,6 +9,7 @@ html {
 
 :root {
   --black: #000;
+  --b-black: #333;
   --grey: #999;
   --grey-light: #bbb;
   --search-bg: #f5f6f7;
@@ -95,15 +96,18 @@ header {
   padding: 0.7rem 1rem;
 }
 
-.connect_container button:not(.cart) {
+.connect_container button:not(a.cart) {
   background-color: white;
   color: var(--primary);
 }
 
-.connect_container > button,
 #sort {
-  background-color: var(--primary);
   color: white;
+}
+
+.connect_container .cart {
+  background-color: var(--primary) !important;
+  color: white !important;
 }
 
 /* Offers */
@@ -178,7 +182,8 @@ header {
 }
 
 .signup_form > *:not(h2),
-.login_form > *:not(h2) {
+.login_form > *:not(h2),
+.publish_form > *:not(h2) {
   width: 275px;
   margin: auto;
   outline: none;
@@ -186,26 +191,33 @@ header {
 }
 
 .signup_form h2,
-.login_form h2 {
+.login_form h2,
+.publish_form h2 {
   margin-bottom: 3rem;
 }
 
+input[type="text"]::placeholder {
+  color: var(--grey-light);
+}
+
 .signup_form > input:not(input[type="submit"]),
-.login_form > input:not(input[type="submit"]) {
+.login_form > input:not(input[type="submit"]),
+.publish_form > input:not(input[type="submit"]) {
   border: none;
   border-bottom: 1px solid #fcced3;
-  color: var(--grey-light);
+  color: var(--b-black);
   height: 3.5rem;
   margin-bottom: 3rem;
 }
 
 .signup_form input[type="submit"],
+.publish_form input[type="submit"],
 .login_form input[type="submit"] {
   background-color: var(--primary);
   height: 4.5rem;
   border: none;
   color: white;
-  margin-top: 2rem;
+  margin: 2rem 0;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -230,7 +242,11 @@ header {
   text-align: center;
 }
 
-.login_form .invalid-feedback {
+.invalid-feedback {
   color: red;
   text-align: center;
+}
+
+.publish_form input[type="file"] {
+  border-bottom: none !important;
 }

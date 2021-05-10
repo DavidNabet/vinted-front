@@ -10,7 +10,6 @@ const Home = ({ isLoading, data }) => {
   ) : (
     <>
       <Hero />
-
       <div className="container card_wrapper">
         {data.offers.map((item) => {
           return (

@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 // import Cookies from "js-cookie";
 
-const Signup = ({ getUserToken }) => {
+const Signup = ({ setUserToken }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,7 +24,7 @@ const Signup = ({ getUserToken }) => {
       );
       // console.log(response.data);
       if (response.data.token) {
-        getUserToken(response.data.token);
+        setUserToken(response.data.token);
         history.push("/");
       } else {
         setErrorMessage("Une erreur est survenue");

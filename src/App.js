@@ -1,10 +1,16 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
 import Login from "./containers/Login";
 import Signup from "./containers/Signup";
+import Publish from "./containers/Publish";
 import Cookies from "js-cookie";
 import axios from "axios";
 import "./App.css";
@@ -15,21 +21,19 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [title, setTitle] = useState("");
   const [sort, setSort] = useState(false);
-  const [priceMin, setPriceMin] = useState(0);
-  const [priceMax, setPriceMax] = useState(20);
-
-  // const [isFetching, setIsFetching] = useState(false);
+  // const [min, setMin] = useState(5);
+  // const [max, setMax] = useState(50);
+  // Slider
 
   useEffect(() => {
     const fetchData = async () => {
+      // "http://localhost:3200/offers",
       const response = await axios.get(
         `https://vinted-back-project.herokuapp.com/offers`,
         {
           params: {
             title: title,
             sort: sort ? "price-desc" : "price-asc",
-            priceMin: priceMin,
-            // priceMax: priceMax,
           },
         }
       );
@@ -38,11 +42,11 @@ function App() {
       setIsLoading(false);
     };
     fetchData();
-  }, [title, sort, priceMin]);
+  }, [title, sort]);
 
-  const getUserToken = (token) => {
+  const setUserToken = (token) => {
     if (token) {
-      Cookies.set("userToken", token, { expires: 7 });
+      Cookies.set("userToken", token, { expires: 10 });
       setTokenUser(token);
     } else {
       Cookies.remove("userToken");
@@ -61,15 +65,15 @@ function App() {
     setSort(!sort);
   };
 
-  const handlePriceMin = (e) => {
-    e.preventDefault();
-    setPriceMin(Number(e.target.value));
-  };
+  // const handlePriceMin = (e) => {
+  //   e.preventDefault();
+  //   setMin(Number(e.target.value));
+  // };
 
-  const handlePriceMax = (e) => {
-    e.preventDefault();
-    setPriceMax(Number(e.target.value));
-  };
+  // const handlePriceMax = (e) => {
+  //   e.preventDefault();
+  //   setMax(Number(e.target.value));
+  // };
 
   return (
     <>
@@ -77,23 +81,26 @@ function App() {
         <Header
           sort={sort}
           tokenUser={tokenUser}
-          getUserToken={getUserToken}
+          setUserToken={setUserToken}
           handleSearch={handleSearchChange}
           setSort={handleCheckFilter}
-          priceMin={priceMin}
-          priceMax={priceMax}
-          setPriceMin={handlePriceMin}
-          setPriceMax={handlePriceMax}
         />
         <Switch>
           <Route path="/offer/:id">
             <Offer />
           </Route>
           <Route path="/login">
-            <Login getUserToken={getUserToken} />
+            <Login setUserToken={setUserToken} />
           </Route>
           <Route path="/signup">
-            <Signup getUserToken={getUserToken} />
+            <Signup setUserToken={setUserToken} />
+          </Route>
+          <Route path="/publish">
+            {tokenUser ? (
+              <Publish tokenUser={tokenUser} />
+            ) : (
+              <Redirect to="/login" />
+            )}
           </Route>
           <Route path="/">
             <Home data={data} isLoading={isLoading} />
