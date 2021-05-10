@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Loader from "../components/Loader";
 import OfferItem from "../components/OfferItem";
 import axios from "axios";
+import { BallSpinner } from "react-spinners-kit";
 
 const Offer = () => {
   const { id } = useParams();
@@ -26,7 +26,7 @@ const Offer = () => {
   }, [id]);
 
   return isLoadingOffer ? (
-    <Loader />
+    <BallSpinner size={30} color="#2cb1ba" loading={false} />
   ) : (
     <div className="offer_wrapper">
       <OfferItem offer={offer} />

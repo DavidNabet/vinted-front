@@ -1,12 +1,11 @@
 import React from "react";
 import Hero from "../components/Hero";
 import { Link } from "react-router-dom";
-
-import Loader from "../components/Loader";
+import { BallSpinner } from "react-spinners-kit";
 
 const Home = ({ isLoading, data }) => {
   return isLoading ? (
-    <Loader />
+    <BallSpinner size={30} color="#2cb1ba" loading={isLoading} />
   ) : (
     <>
       <Hero />

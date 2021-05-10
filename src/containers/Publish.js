@@ -11,7 +11,7 @@ const Publish = ({ tokenUser }) => {
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
   const [picture, setPicture] = useState({});
-  const [errors, setErrors] = useState("");
+  //   const [errors, setErrors] = useState("");
   //history
   const history = useHistory();
 
@@ -54,11 +54,11 @@ const Publish = ({ tokenUser }) => {
         history.push("/");
       }
     } catch (err) {
-      if (err.response.status === 400) {
-        setErrors("Remplissez tous les champs");
-      } else {
-        setErrors("Une erreur est survenue");
-      }
+      //   if (err.response.status === 400) {
+      //     setErrors("Remplissez tous les champs");
+      //   } else {
+      //     setErrors("Une erreur est survenue");
+      //   }
       console.log(err.message);
     }
   };
@@ -120,7 +120,7 @@ const Publish = ({ tokenUser }) => {
           placeholder="Couleur"
           onChange={(e) => setColor(e.target.value)}
         />
-        {errors && <p className="invalid-feedback">{errors}</p>}
+        {/* {errors && <p className="invalid-feedback">{errors}</p>} */}
         <input type="submit" value="Ajouter une annonce" />
       </form>
     </>

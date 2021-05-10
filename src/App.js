@@ -86,6 +86,9 @@ function App() {
           setSort={handleCheckFilter}
         />
         <Switch>
+          <Route exact path="/">
+            <Home data={data} isLoading={isLoading} />
+          </Route>
           <Route path="/offer/:id">
             <Offer />
           </Route>
@@ -101,9 +104,6 @@ function App() {
             ) : (
               <Redirect to="/login" />
             )}
-          </Route>
-          <Route path="/">
-            <Home data={data} isLoading={isLoading} />
           </Route>
         </Switch>
       </Router>
