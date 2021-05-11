@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import axios from "axios";
 const Publish = ({ tokenUser }) => {
+  const [picture, setPicture] = useState();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -10,7 +11,6 @@ const Publish = ({ tokenUser }) => {
   const [brand, setBrand] = useState("");
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
-  const [picture, setPicture] = useState({});
   //   const [errors, setErrors] = useState("");
   //history
   const history = useHistory();
@@ -74,11 +74,17 @@ const Publish = ({ tokenUser }) => {
           placeholder="Titre"
           onChange={(e) => setTitle(e.target.value)}
         />
-        <input
-          type="file"
-          placeholder="Annonce"
-          onChange={(e) => setPicture(e.target.files[0])}
-        />
+        <div className="select_file">
+          <label htmlFor="file">Ajouter une image</label>
+          <input
+            style={{ display: "none" }}
+            type="file"
+            id="file"
+            placeholder="Annonce"
+            onChange={(e) => setPicture(e.target.files[0])}
+          />
+          {picture && <img src={URL.createObjectURL(picture)} />}
+        </div>
         <input
           type="text"
           value={description}
