@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import logo from "../assets/vinted_logo.png";
 import { Link, useLocation } from "react-router-dom";
-import PriceRange from "./RangeSlider/PriceRange";
+import PriceRange from "./RangeSlider";
 
 const Header = ({
   tokenUser,

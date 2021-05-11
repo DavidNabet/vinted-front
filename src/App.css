@@ -15,6 +15,8 @@ html {
   --search-bg: #f5f6f7;
   --primary: #2cb1ba;
   --primary-hover: #2baeb7;
+  --secondary: #c2175b;
+  --payment: #02c06d;
 }
 
 body {
@@ -38,6 +40,10 @@ h1 {
 
 h2 {
   font-size: 2.4rem;
+}
+
+h5 {
+  font-size: 1.6rem;
 }
 /* Header */
 
@@ -104,6 +110,12 @@ header {
   border-radius: 5px;
   border: 1px solid var(--primary-hover);
   padding: 0.7rem 1rem;
+}
+
+.connect_container .disconnect {
+  background-color: var(--secondary) !important;
+  border-color: var(--secondary);
+  color: white !important;
 }
 
 .connect_container button:not(a.cart) {
@@ -248,15 +260,101 @@ input[type="text"]::placeholder {
 .form a {
   color: var(--primary);
   font-size: 1.2rem;
-  margin-top: 2rem;
+  margin: 2rem 0;
   text-align: center;
+  text-decoration: none;
 }
 
 .invalid-feedback {
-  color: red;
+  color: var(--secondary);
   text-align: center;
 }
 
 .publish_form input[type="file"] {
   border-bottom: none !important;
+}
+
+/* Payment */
+.payment_wrapper {
+  padding-top: 3rem;
+}
+.payment_container {
+  width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  padding: 2rem 0;
+  background-color: white;
+}
+
+.payment_container .top {
+  border-bottom: 1px solid var(--grey-light);
+  padding-bottom: 3rem;
+}
+
+.payment_container .bottom {
+  padding-top: 3rem;
+}
+
+.payment_container .top,
+.payment_container .bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.payment_container .top p,
+.payment_container .bottom > p:first-child {
+  display: flex;
+}
+
+.payment_container .top h5 {
+  color: var(--grey);
+  margin-bottom: 3rem;
+}
+
+.payment_container .top span {
+  color: var(--grey);
+}
+
+.payment_container .top span,
+.payment_container .bottom span {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  font-weight: bold;
+}
+
+.payment_container .top p > span:first-child,
+.payment_container .bottom p > span:first-child {
+  flex: 1;
+}
+
+.payment_container .bottom .baseline {
+  margin: 2rem 0 0;
+  border-bottom: 1px solid #545454;
+  padding-bottom: 2rem;
+}
+
+.payment_container .bottom .payment_purchase_inner {
+  margin-top: 2rem;
+}
+
+.payment_purchase_inner .btn_payment {
+  color: #fff;
+  background-color: var(--payment);
+  border: 1px solid var(--payment);
+  border-radius: 4px;
+  width: 100%;
+  font-size: 1.6rem;
+  height: 3.6rem;
+  padding: 0 1.6rem;
+  line-height: 36px;
+  margin-top: 3.2rem;
+  cursor: pointer;
 }

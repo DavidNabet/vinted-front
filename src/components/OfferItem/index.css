@@ -1,5 +1,6 @@
 /* Offer */
-.offer_wrapper {
+.offer_wrapper,
+.payment_wrapper {
   height: calc(100vh - 60px);
   background-color: #ebedee;
 }

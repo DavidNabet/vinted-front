@@ -4,7 +4,7 @@ import OfferItem from "../components/OfferItem";
 import axios from "axios";
 import { BallSpinner } from "react-spinners-kit";
 
-const Offer = () => {
+const Offer = ({ tokenUser }) => {
   const { id } = useParams();
   const [offer, setOffer] = useState([]);
   const [isLoadingOffer, setIsLoadingOffer] = useState(true);
@@ -30,7 +30,7 @@ const Offer = () => {
     <BallSpinner size={30} color="#2cb1ba" loading={false} />
   ) : (
     <div className="offer_wrapper">
-      <OfferItem offer={offer} />
+      <OfferItem offer={offer} tokenUser={tokenUser} />
     </div>
   );
 };

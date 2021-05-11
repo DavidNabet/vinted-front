@@ -11,6 +11,8 @@ import Offer from "./containers/Offer";
 import Login from "./containers/Login";
 import Signup from "./containers/Signup";
 import Publish from "./containers/Publish";
+import Payment from "./containers/Payment";
+// Packages
 import Cookies from "js-cookie";
 import axios from "axios";
 import "./App.css";
@@ -82,13 +84,16 @@ function App() {
             <Home data={data} isLoading={isLoading} />
           </Route>
           <Route path="/offer/:id">
-            <Offer />
+            <Offer tokenUser={tokenUser} />
           </Route>
           <Route path="/login">
             <Login setUserToken={setUserToken} />
           </Route>
           <Route path="/signup">
             <Signup setUserToken={setUserToken} />
+          </Route>
+          <Route path="/payment">
+            {tokenUser ? <Payment /> : <Redirect to="/login" />}
           </Route>
           <Route path="/publish">
             {tokenUser ? (

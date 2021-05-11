@@ -1,7 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./index.css";
-
-const OfferItem = ({ offer }) => {
+const OfferItem = ({ offer, tokenUser }) => {
   return (
     <div className="offer_container">
       <img src={offer.product_image.secure_url} alt="" />
@@ -32,7 +32,7 @@ const OfferItem = ({ offer }) => {
             </li>
             <li>
               <span>MODES DE PAIEMENT</span>
-              <span>CARTE BANCAIRE, PAYPAL</span>
+              <span>CARTE BANCAIRE, STRIPE</span>
             </li>
           </ul>
         </div>
@@ -44,7 +44,15 @@ const OfferItem = ({ offer }) => {
             <span>{offer.owner.account.username}</span>
           </div>
         </div>
-        <button>Acheter</button>
+        {tokenUser ? (
+          <Link to={{ pathname: "/payment", state: offer }}>
+            <button>Acheter</button>
+          </Link>
+        ) : (
+          <Link to="/login">
+            <button>Acheter</button>
+          </Link>
+        )}
       </div>
     </div>
   );

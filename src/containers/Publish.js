@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import axios from "axios";
 const Publish = ({ tokenUser }) => {
   const [title, setTitle] = useState("");
@@ -66,6 +66,7 @@ const Publish = ({ tokenUser }) => {
   return (
     <>
       <form onSubmit={handleSubmit} className="form publish_form">
+        <Link to="/">Revenir sur la page d'Accueil ?</Link>
         <h2>Publier une annonce</h2>
         <input
           type="text"
