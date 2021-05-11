@@ -1,8 +1,17 @@
 // import { useState } from "react";
 import logo from "../assets/vinted_logo.png";
 import { Link, useLocation } from "react-router-dom";
+import PriceRange from "./RangeSlider/PriceRange";
 
-const Header = ({ tokenUser, setUserToken, handleSearch, setSort, sort }) => {
+const Header = ({
+  tokenUser,
+  setUserToken,
+  handleSearch,
+  setSort,
+  sort,
+  setRangeSlider,
+  rangeSlider,
+}) => {
   const location = useLocation();
   return (
     <header>
@@ -18,7 +27,7 @@ const Header = ({ tokenUser, setUserToken, handleSearch, setSort, sort }) => {
               placeholder="Recherche des articles"
             />
             {location.pathname === "/" ? (
-              <>
+              <div className="section-filters">
                 <button
                   id="sort"
                   style={{
@@ -30,8 +39,10 @@ const Header = ({ tokenUser, setUserToken, handleSearch, setSort, sort }) => {
                 >
                   {sort ? "Desc" : "Asc"}
                 </button>
-                <div className="section-range"></div>
-              </>
+                <div className="section-range">
+                  <PriceRange setRangeSlider={setRangeSlider} />
+                </div>
+              </div>
             ) : (
               ""
             )}

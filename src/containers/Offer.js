@@ -14,6 +14,7 @@ const Offer = () => {
       try {
         const response = await axios.get(
           `https://vinted-back-project.herokuapp.com/offer/${id}`
+          // `http://localhost:3200/offer/${id}`
         );
         // console.log(response.data);
         setOffer(response.data);

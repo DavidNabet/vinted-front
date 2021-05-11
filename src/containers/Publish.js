@@ -31,9 +31,9 @@ const Publish = ({ tokenUser }) => {
     formData.append("picture", picture);
 
     try {
-      // "http://localhost:3200/offer/publish",
       const response = await axios.post(
         "https://vinted-back-project.herokuapp.com/offer/publish",
+        // "http://localhost:3200/offer/publish",
         formData,
         {
           headers: {

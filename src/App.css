@@ -79,6 +79,16 @@ header {
   padding-left: 2rem;
 }
 
+.section-filters {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.section-filters .section-range {
+  width: calc(100% / 2);
+}
+
 .header .connect_container {
   flex: 1;
   display: flex;
@@ -159,7 +169,7 @@ header {
 
 .card_container .card_offer > img {
   height: 360px;
-  width: 235px;
+  width: 100%;
   object-fit: cover;
 }
 

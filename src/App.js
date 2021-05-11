@@ -21,19 +21,20 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [title, setTitle] = useState("");
   const [sort, setSort] = useState(false);
-  // const [min, setMin] = useState(5);
-  // const [max, setMax] = useState(50);
+  const [rangeSlider, setRangeSlider] = useState([0, 5000]);
   // Slider
 
   useEffect(() => {
     const fetchData = async () => {
-      // "http://localhost:3200/offers",
       const response = await axios.get(
         `https://vinted-back-project.herokuapp.com/offers`,
+        // "http://localhost:3200/offers",
         {
           params: {
             title: title,
             sort: sort ? "price-desc" : "price-asc",
+            priceMin: rangeSlider[0],
+            priceMax: rangeSlider[1],
           },
         }
       );
@@ -42,7 +43,7 @@ function App() {
       setIsLoading(false);
     };
     fetchData();
-  }, [title, sort]);
+  }, [title, sort, rangeSlider]);
 
   const setUserToken = (token) => {
     if (token) {
@@ -57,23 +58,12 @@ function App() {
   const handleSearchChange = (evt) => {
     evt.preventDefault();
     setTitle(evt.target.value);
-    // console.log(resultsSearch);
   };
 
   const handleCheckFilter = (e) => {
     e.preventDefault();
     setSort(!sort);
   };
-
-  // const handlePriceMin = (e) => {
-  //   e.preventDefault();
-  //   setMin(Number(e.target.value));
-  // };
-
-  // const handlePriceMax = (e) => {
-  //   e.preventDefault();
-  //   setMax(Number(e.target.value));
-  // };
 
   return (
     <>
@@ -84,6 +74,8 @@ function App() {
           setUserToken={setUserToken}
           handleSearch={handleSearchChange}
           setSort={handleCheckFilter}
+          rangeSlider={rangeSlider}
+          setRangeSlider={setRangeSlider}
         />
         <Switch>
           <Route exact path="/">
