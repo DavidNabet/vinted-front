@@ -30,7 +30,6 @@ const Signup = ({ setUserToken }) => {
       } else {
         setErrorMessage("Une erreur est survenue");
       }
-      history.push("/login");
     } catch (err) {
       if (err.response.status === 409) {
         setErrorMessage("Cet email possède déjà un compte");

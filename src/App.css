@@ -232,6 +232,14 @@ input[type="text"]::placeholder {
   margin-bottom: 3rem;
 }
 
+.publish_form textarea {
+  height: 3.5rem;
+  margin-bottom: 3rem;
+  color: var(--b-black);
+  font-family: inherit;
+  resize: none;
+}
+
 .signup_form input[type="submit"],
 .publish_form input[type="submit"],
 .login_form input[type="submit"] {

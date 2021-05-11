@@ -52,6 +52,7 @@ const Publish = ({ tokenUser }) => {
         setSize("");
         setColor("");
         history.push("/");
+        window.location.reload(false);
       }
     } catch (err) {
       //   if (err.response.status === 400) {
@@ -83,14 +84,14 @@ const Publish = ({ tokenUser }) => {
             placeholder="Annonce"
             onChange={(e) => setPicture(e.target.files[0])}
           />
-          {picture && <img src={URL.createObjectURL(picture)} />}
+          {picture && <img src={URL.createObjectURL(picture)} alt="file-img" />}
         </div>
-        <input
-          type="text"
+        <textarea
           value={description}
           placeholder="Description"
           onChange={(e) => setDescription(e.target.value)}
         />
+
         <input
           type="text"
           value={price}
