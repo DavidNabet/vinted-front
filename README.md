@@ -20,17 +20,25 @@
 
 ## Preview
 
-### Login
-
 ### Signup
 
-### Home
+![Register](https://res.cloudinary.com/dkigh7ogm/image/upload/v1625061084/vinted/preview/signup.png)
+
+### Home (filters are active)
+
+![Home](https://res.cloudinary.com/dkigh7ogm/image/upload/v1625061085/vinted/preview/home.png)
 
 ### Offer
 
+![Product](https://res.cloudinary.com/dkigh7ogm/image/upload/v1625061085/vinted/preview/product.png)
+
 ### Publish
 
+![Publish-Page](https://res.cloudinary.com/dkigh7ogm/image/upload/v1625061084/vinted/preview/publish.png)
+
 ### Payment
+
+![Payment](https://res.cloudinary.com/dkigh7ogm/image/upload/v1625061084/vinted/preview/payment.png)
 
 ## How to Use
 
