@@ -47,12 +47,14 @@ function App() {
     fetchData();
   }, [title, sort, rangeSlider]);
 
-  const setUserToken = (token) => {
+  const setUserToken = (token, id) => {
     if (token) {
       Cookies.set("userToken", token, { expires: 10 });
+      Cookies.set("userId", id);
       setTokenUser(token);
     } else {
       Cookies.remove("userToken");
+      Cookies.remove("userId");
       setTokenUser(null);
     }
   };

@@ -22,7 +22,7 @@ const Login = ({ setUserToken }) => {
       );
       // console.log(response.data);
       if (response.data.token) {
-        setUserToken(response.data.token);
+        setUserToken(response.data.token, response.data._id);
         history.push("/publish");
       }
     } catch (err) {

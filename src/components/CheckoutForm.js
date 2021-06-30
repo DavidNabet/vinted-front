@@ -2,11 +2,13 @@ import { useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-const CheckoutForm = ({ owner, descriptionOffer, priceOffer }) => {
+import Cookies from "js-cookie";
+const CheckoutForm = ({ descriptionOffer, priceOffer }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [completed, setCompleted] = useState(false);
   const history = useHistory();
+  const userId = Cookies.get("userId");
 
   const handlePayClick = async (e) => {
     try {
@@ -16,7 +18,7 @@ const CheckoutForm = ({ owner, descriptionOffer, priceOffer }) => {
       // Demande de création d'un token via l'API Stripe
       // On envoie les données bancaires dans la requête
       const stripeResponse = await stripe.createToken(cardElement, {
-        name: owner,
+        name: userId,
       });
       // console.log(stripeResponse);
       const stripeToken = stripeResponse.token.id;

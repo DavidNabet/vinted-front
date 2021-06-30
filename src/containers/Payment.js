@@ -13,7 +13,7 @@ const Payment = () => {
   const FRAIS_ACHETEURS = (0.4).toFixed(2);
   const FRAIS_PORT = (0.8).toFixed(2);
 
-  console.log(PRICE, FRAIS_ACHETEURS, FRAIS_PORT);
+  // console.log(PRICE, FRAIS_ACHETEURS, FRAIS_PORT);
 
   const total = () => {
     let tab = [];
@@ -23,7 +23,7 @@ const Payment = () => {
   };
 
   const TOTAL_RESULT = total().toFixed(2);
-  console.log(TOTAL_RESULT);
+  // console.log(TOTAL_RESULT);
 
   return (
     <div className="payment_wrapper">
@@ -57,7 +57,7 @@ const Payment = () => {
           <div className="payment_purchase_inner">
             <Elements stripe={stripePromise}>
               <CheckoutForm
-                owner={owner._id}
+                // owner={owner._id}
                 descriptionOffer={product_description}
                 priceOffer={TOTAL_RESULT}
               />

@@ -25,7 +25,7 @@ const Signup = ({ setUserToken }) => {
       );
       // console.log(response.data);
       if (response.data.token) {
-        setUserToken(response.data.token);
+        setUserToken(response.data.token, response.data._id);
         history.push("/");
       } else {
         setErrorMessage("Une erreur est survenue");
