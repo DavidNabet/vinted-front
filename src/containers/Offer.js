@@ -13,7 +13,7 @@ const Offer = ({ tokenUser }) => {
     const fetchDataSingle = async () => {
       try {
         const response = await axios.get(
-          `https://vinted-back-project.herokuapp.com/offer/${id}`
+          `${process.env.REACT_APP_BACKEND_URI}/offer/${id}`
           // `http://localhost:3200/offer/${id}`
         );
         // console.log(response.data);

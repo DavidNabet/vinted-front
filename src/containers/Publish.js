@@ -32,7 +32,7 @@ const Publish = ({ tokenUser }) => {
 
     try {
       const response = await axios.post(
-        "https://vinted-back-project.herokuapp.com/offer/publish",
+        `${process.env.REACT_APP_BACKEND_URI}/offer/publish`,
         // "http://localhost:3200/offer/publish",
         formData,
         {

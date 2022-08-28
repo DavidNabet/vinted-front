@@ -26,7 +26,7 @@ const CheckoutForm = ({ descriptionOffer, priceOffer }) => {
       // Requête vers notre serveur
       // On envoie le token reçu depuis l'API Stripe
       const response = await axios.post(
-        "https://vinted-back-project.herokuapp.com/payment",
+        `${process.env.REACT_APP_BACKEND_URI}/payment`,
         // "http://localhost:3200/payment",
         {
           stripeToken: stripeToken,

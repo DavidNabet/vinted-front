@@ -13,7 +13,7 @@ const Login = ({ setUserToken }) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://vinted-back-project.herokuapp.com/user/login",
+        `${process.env.REACT_APP_BACKEND_URI}/user/login`,
         // "http://localhost:3200/user/login",
         {
           email: email,
