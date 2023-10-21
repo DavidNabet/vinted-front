@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import logo from "../assets/vinted_logo.png";
 import { Link, useLocation } from "react-router-dom";
-import PriceRange from "./RangeSlider";
+// import PriceRange from "./RangeSlider";
 
 const Header = ({
   tokenUser,
@@ -40,7 +40,7 @@ const Header = ({
                   {sort ? "Desc" : "Asc"}
                 </button>
                 <div className="section-range">
-                  <PriceRange setRangeSlider={setRangeSlider} />
+                  {/* <PriceRange setRangeSlider={setRangeSlider} /> */}
                 </div>
               </div>
             ) : (
